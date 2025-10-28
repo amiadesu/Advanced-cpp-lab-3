@@ -6,6 +6,10 @@
 #include <barrier>
 #include <atomic>
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 using namespace std;
 
 struct InitData {
@@ -67,7 +71,7 @@ void run_simulation(const InitData& data) {
 
 int main() {
 #ifdef _WIN32
-	system("chcp 65001 > nul");
+	SetConsoleOutputCP(65001);
 #endif
 
 	InitData data;
